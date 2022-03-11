@@ -42,7 +42,11 @@ myList.add(b);
 ### Non Short Circuit Operators ( & , | )
 * When used in boolean expressions, the & and | operators act like their && and || counterparts, except that they force the JVM to always check both sides of the expression. Typically, & and | are used in another context, for manipulating bits.
 
-
-
+### Packages
+* They help the overall organization of a project or library
+* Packages give you a namescoping, to help prevent collisions for a class with the same name
+* Packages provide a level of security, because you can restrict the code you write so that only other classes in the same package can access it
+* classes in java.lang package don't need to be imported (for ex. java.lang.String)
+* 
 
 Source : [Head First Java 2nd Ed.]

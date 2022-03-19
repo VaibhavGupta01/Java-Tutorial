@@ -84,6 +84,65 @@ public class Surgeon extends Doctor {
 
 ```
 
+* Only public members are inherited and private are not.
+* Use the IS-A test to verify that your inheritance hierarchy is valid. If X extends Y, then X IS-A Y must make sense.
+
+## Polymorphism
+
+```java
+Animal[] animals = new Animal[5];
+animals [0] = new Dog();
+animals [1] = new Cat();
+animals [2] = new Wolf();
+animals [3] = new Hippo();
+animals [4] = new Lion();
+
+for (int i = 0; i < animals.length; i++) {
+	//When ‘i’ is 0, you get the Dog’s eat() method. When ‘i’ is 1, you get the Cat’s eat() method
+	animals[i].eat();	
+	animals[i].roam();
+}
+```
+
+* You can have polymorphism with arguments and return types also.
+```java
+// Polymorphism in methods
+
+class Vet {
+	public void giveShot(Animal a) {
+// do horrible things to the Animal at
+// the other end of the ‘a’ parameter
+		a.makeNoise();
+	}
+}
+
+class PetOwner {
+	public void start() {
+		Vet v = new Vet();
+		Dog d = new Dog();
+		Hippo h = new Hippo();
+		v.giveShot(d); // Dog’s makeNoise() runs
+		v.giveShot(h); // Hippo’s makeNoise() runs
+	}
+}
+```
+![polymorphism reference](Polymorphism.jpg)
+
+### Not all classes can be inherited
+* There’s no such thing as a private class, except in a very special case called an inner class, that we haven’t looked at yet
+> #### Things that can prevent a class from being subclassed
+* Even though a class can’t be marked private, a class can be non-public (what you get if you don’t declare the class as public). A non-public class can be subclassed only by classes in the same package as the class. Classes in a different package won’t be able to subclass (or even use, for that matter) the non-public class.
+* The second thing that stops a class from being subclassed is the keyword modifier final. A final class means that it’s the end of the inheritance line. Nobody, ever, can extend a final class.
+* The third issue is that if a class has only private constructors
+
+* If you want to protect a specific method from being overridden, mark the method with the final modifier. Mark the whole class as final if you want to guarantee that none of the methods in that class will ever be overridden.
+
+### Overriding
+* Arguments must be the same, and return types must be compatible.
+* The method can’t be less accessible.
+
+### Overloading
+* Arguments lists have to be different
 
 
 ```java

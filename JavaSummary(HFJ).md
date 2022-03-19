@@ -32,7 +32,6 @@ int idx = myList.indexOf(b);
 // Put another thing in it
 Egg b = new Egg();
 myList.add(b);
-
 ```
 
 ## Boolean Operators
@@ -47,6 +46,46 @@ myList.add(b);
 * Packages give you a namescoping, to help prevent collisions for a class with the same name
 * Packages provide a level of security, because you can restrict the code you write so that only other classes in the same package can access it
 * classes in java.lang package don't need to be imported (for ex. java.lang.String)
-* 
 
+# Inheritance and Polymorphism
+
+* the subclass inherits the members (the instance variables and methods) of the superclass
+* methods can be overriden by subclass but Instance variables are not overridden (because they don’t need to be)
+* In Java, we say that **the subclass extends the superclass**
+
+
+```java
+
+public class Doctor {
+	boolean worksAtHospital;
+
+	void treatPatient() {
+// perform a checkup
+	}
+}
+
+public class FamilyDoctor extends Doctor {
+	boolean makesHouseCalls;
+
+	void giveAdvice() {
+// give homespun advice
+	}
+}
+
+public class Surgeon extends Doctor {
+	void treatPatient() {
+// perform surgery
+	}
+
+	void makeIncision() {
+// make incision (yikes!)
+	}
+}
+
+```
+
+
+
+```java
+```
 Source : [Head First Java 2nd Ed.]

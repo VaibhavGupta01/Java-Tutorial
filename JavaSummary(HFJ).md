@@ -1,7 +1,20 @@
 # Java Summary Sheet
 
-# Table of Contents
-1. [Get to know the Java API](#get-to-know-the-Java-API)
+- [Java Summary Sheet](#java-summary-sheet)
+- [Get to know the Java API](#get-to-know-the-java-api)
+	- [Working with ArrayList](#working-with-arraylist)
+	- [Boolean Operators](#boolean-operators)
+		- [Non Short Circuit Operators ( \& , | )](#non-short-circuit-operators-----)
+		- [Packages](#packages)
+- [Inheritance and Polymorphism](#inheritance-and-polymorphism)
+	- [Polymorphism](#polymorphism)
+		- [Not all classes can be inherited](#not-all-classes-can-be-inherited)
+		- [Overriding](#overriding)
+		- [Overloading](#overloading)
+- [Interfaces and Abstract classes](#interfaces-and-abstract-classes)
+	- [Abstract Class](#abstract-class)
+		- [Abstract methods](#abstract-methods)
+		- [Object](#object)
 
 # Get to know the Java API
 
@@ -104,7 +117,7 @@ for (int i = 0; i < animals.length; i++) {
 }
 ```
 
-* You can have polymorphism with arguments and return types also.
+* You can have polymorphism with arguments and return types also
 ```java
 // Polymorphism in methods
 
@@ -131,8 +144,8 @@ class PetOwner {
 ### Not all classes can be inherited
 * There’s no such thing as a private class, except in a very special case called an inner class, that we haven’t looked at yet
 > #### Things that can prevent a class from being subclassed
-* Even though a class can’t be marked private, a class can be non-public (what you get if you don’t declare the class as public). A non-public class can be subclassed only by classes in the same package as the class. Classes in a different package won’t be able to subclass (or even use, for that matter) the non-public class.
-* The second thing that stops a class from being subclassed is the keyword modifier final. A final class means that it’s the end of the inheritance line. Nobody, ever, can extend a final class.
+* Even though a class can’t be marked private, a class can be non-public (what you get if you don’t declare the class as public). A non-public class can be subclassed only by classes in the same package as the class. Classes in a different package won’t be able to subclass (or even use, for that matter) the non-public class
+* The second thing that stops a class from being subclassed is the keyword modifier final. A final class means that it’s the end of the inheritance line. Nobody, ever, can extend a final class
 * The third issue is that if a class has only private constructors
 
 * If you want to protect a specific method from being overridden, mark the method with the final modifier. Mark the whole class as final if you want to guarantee that none of the methods in that class will ever be overridden.
@@ -143,6 +156,61 @@ class PetOwner {
 
 ### Overloading
 * Arguments lists have to be different
+
+# Interfaces and Abstract classes
+
+## Abstract Class
+* You can make some classes abstract that don't need to be instantiated and only used for inheritance
+```java
+//Example of an abstract class that has abstract and non-abstract methods  
+abstract class Bike {
+	Bike() {
+		System.out.println("bike is created");
+	}
+
+	abstract void run();
+
+	void changeGear() {
+		System.out.println("gear changed");
+	}
+}
+
+//Creating a Child class which inherits Abstract class  
+class Honda extends Bike {
+	void run() {
+		System.out.println("running safely..");
+	}
+}
+```
+* non abstract classes sometimes known as concrete classes
+
+### Abstract methods
+
+> * An abstract class can have both abstract and non-abstract methods
+> * If a class has even one abstract method, the class must be marked abstract
+> * An abstract method has no body, and the declaration ends with a semicolon (no
+curly braces)
+> * All abstract methods must be implemented in the first concrete subclass in the inheritance tree
+
+### Object
+* Any class that doesn’t explicitly extend another class, implicitly extends *Object* class.
+* Every class in Java is either a direct or indirect subclass of class Object (java.lang.
+Object)
+* Mainly, Object has 4 members : 
+```java
+boolean equals()	// compares the given object to this object
+Class getClass() 	// returns the Class class object of this object
+int hashCode() 		// returns the hashcode number for this object
+String toString()	// returns the string representation of this object
+
+// hashCode(), equals(), and toString() can be overridden but getClass can't
+```
+* Object can be used as a polymorphic type for methods that need to work on any class that you or anyone else makes
+* But, using object reference has its price. (Because Java is a strongly-typed language) You can call only those methods which are supported by the object reference.
+```java
+Object o = new Ferrari(); 
+o.goFast(); //Not legal!
+```
 
 
 ```java
